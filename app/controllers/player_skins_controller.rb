@@ -1,0 +1,2 @@
+class PlayerSkinsController < ApplicationController
+end

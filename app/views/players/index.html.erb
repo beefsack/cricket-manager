@@ -1,0 +1,24 @@
+<h1>Listing players</h1>
+
+<ul>
+  <li><%= link_to "New", new_player_path %></li>
+</ul>
+ 
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Active</th>
+  </tr>
+ 
+  <% @players.each do |player| %>
+    <tr>
+      <td><%= player.name %></td>
+      <td><%= player.active ? "yes" : "no" %></td>
+      <td>
+        <%= link_to "Show", player_path(player) %>
+        <%= link_to "Edit", edit_player_path(player) %>
+        <%= link_to 'Destroy', player_path(player), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+    </tr>
+  <% end %>
+</table>

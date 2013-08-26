@@ -1,0 +1,21 @@
+<%= form_for @match do |f| %>
+  <% if @match.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@match.errors.count, "error") %> prohibited
+      this match from being saved:</h2>
+    <ul>
+    <% @match.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <p>
+    <%= f.label :match_date %><br>
+    <%= f.date_field :match_date %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
