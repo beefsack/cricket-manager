@@ -1,0 +1,28 @@
+<%= form_for @skin do |f| %>
+  <% if @skin.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@skin.errors.count, "error") %> prohibited
+      this skin from being saved:</h2>
+    <ul>
+    <% @skin.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <p>
+    <%= f.label :match_id %><br>
+    <%= f.select :match_id, options_from_collection_for_select(Match.order('match_date DESC'), :id, :match_date) %>
+  </p>
+  <ul>
+    <%= f.fields_for :player_skins do |player_skins_form| %>
+      <li>
+        <%= player_skins_form.label :player_id %>
+        <%= player_skins_form.select :player_id, options_from_collection_for_select(Player.order('name'), :id, :name) %>
+      </li>
+    <% end %>
+  </ul>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

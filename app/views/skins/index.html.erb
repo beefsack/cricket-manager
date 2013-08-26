@@ -1,0 +1,24 @@
+<h1>Listing skins</h1>
+
+<ul>
+  <li><%= link_to "New", new_skin_path %></li>
+</ul>
+ 
+<table>
+  <tr>
+    <th>Match</th>
+    <th>Players</th>
+  </tr>
+ 
+  <% @skins.each do |skin| %>
+    <tr>
+      <td><%= skin.match.match_date %></td>
+      <td></td>
+      <td>
+        <%= link_to "Show", skin_path(skin) %>
+        <%= link_to "Edit", edit_skin_path(skin) %>
+        <%= link_to 'Destroy', skin_path(skin), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+    </tr>
+  <% end %>
+</table>
